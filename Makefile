@@ -2,7 +2,7 @@
 CC = arm-none-eabi-gcc
 OBJCOPY = arm-none-eabi-objcopy
 SIZE = arm-none-eabi-size
-GDB = arm-none-eabi-gdb
+GDB = gdb-multiarch
 OPENOCD = openocd
 STFLASH = /usr/bin/st-flash  # Dùng đường dẫn tuyệt đối
 RM = rm -rf
@@ -24,7 +24,6 @@ TARGET = $(BIN_DIR)/stm32_blinking
 # Source files
 SOURCES = Core/Src/main.c \
           Drivers/Src/GPIO.c \
-          Drivers/Src/RCC.c	\
           Startup/stm32_startup.c
 
 OBJECT_NAMES = $(SOURCES:.c=.o)

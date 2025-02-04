@@ -17,6 +17,11 @@ int main(void){
 
     GPIO_PeriClockControl(GPIOD, ENABLE);
     GPIO_Init(&GpioLed);
-    
+    while(1){
+        GPIO_WriteToOutputPin(GPIOD, GPIO_PIN_NO_12, GPIO_PIN_SET);
+        delay();
+        GPIO_WriteToOutputPin(GPIOD, GPIO_PIN_NO_12, GPIO_PIN_RESET);
+        delay();
+    }
     return 0;
 }
