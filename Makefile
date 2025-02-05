@@ -27,13 +27,14 @@ SOURCES = Core/Src/main.c \
           Startup/stm32_startup.c
 
 OBJECT_NAMES = $(SOURCES:.c=.o)
+OBJECT_NAMES := $(OBJECT_NAMES:.s=.o)
 OBJECTS = $(patsubst %,$(OBJ_DIR)/%,$(OBJECT_NAMES))
 
 # Flags
 MCU = cortex-m4
 WFLAGS = -Wall -Wextra -Werror -Wshadow
 CFLAGS = -mcpu=$(MCU) -mthumb $(WFLAGS) $(addprefix -I,$(INCLUDE_DIRS)) -O0 -g3 -std=gnu11
-LDFLAGS = -mcpu=$(MCU) -mthumb -T Linker/stm_ls.ld -specs=nosys.specs -specs=nano.specs -Wl,--gc-sections -lm
+LDFLAGS = -mcpu=$(MCU) -mthumb -T Linker/STM32F407VGTx_FLASH.ld -specs=nosys.specs -specs=nano.specs -Wl,--gc-sections -lm
 
 # Build
 ## Linking
@@ -43,6 +44,10 @@ $(TARGET).elf: $(OBJECTS)
 
 ## Compiling
 $(OBJ_DIR)/%.o: %.c
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c -o $@ $^
+
+$(OBJ_DIR)/%.o: %.s
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c -o $@ $^
 
