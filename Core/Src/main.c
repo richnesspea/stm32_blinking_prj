@@ -4,7 +4,6 @@ void delay(void){
     for(uint32_t i = 0; i < 50000; i++);
 }
 
-
 //Blinking LED1 = PD12
 int main(void){
     GPIO_Handle_t GpioLed;

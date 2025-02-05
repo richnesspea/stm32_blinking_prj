@@ -110,6 +110,8 @@ typedef struct {
 #define GPIOB_PCLK_EN() (RCC->AHB1ENR |= (1 << 1)) 
 #define GPIOC_PCLK_EN() (RCC->AHB1ENR |= (1 << 2))
 #define GPIOD_PCLK_EN() (RCC->AHB1ENR |= (1 << 3))
+#define GPIOE_PCLK_EN() (RCC->AHB1ENR |= (1 << 4)) 
+
 
 
 //Clock Disable Macro for GPIOx peripherals
@@ -117,6 +119,8 @@ typedef struct {
 #define GPIOB_PCLK_DI() (RCC->AHB1ENR &= ~(1 << 1)) 
 #define GPIOC_PCLK_DI() (RCC->AHB1ENR &= ~(1 << 2)) 
 #define GPIOD_PCLK_DI() (RCC->AHB1ENR &= ~(1 << 3)) 
+#define GPIOE_PCLK_DI() (RCC->AHB1ENR &= ~(1 << 4)) 
+
 
 //Some generic macros
 #define ENABLE          1
